@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BagKart - Best place to buy premium quality bags online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav
+      class="w-full fixed top-0 left-0 flex justify-between bg-zinc-50 px-5 py-3 text-sm items-center"
+    >
+      <h1 class="text-3xl">BagKart</h1>
+      <div class="flex gap-10">
+        <a href="">Shop</a>
+        <a href="/cart">Cart</a>
+        <a href="">My Account</a>
+        <a href="/users/logout" class="text-red-400">Logout</a>
+      </div>
+    </nav>
+    <% if(success.length > 0) { %>
+    <div
+      class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500"
+    >
+      <span class="inline-block my-1 text-white"><%= success %> </span>
+    </div>
+    <%}%>
+    <div class="mainContainer flex gap-24 py-20 px-10">
+      <div class="left flex flex-col gap-20">
+        <div class="sort flex gap-2 text-sm">
+          <label for="cars">Sort by</label>
+          <select name="sort">
+            <option value="volvo">Popular</option>
+            <option value="saab">Price - low to high</option>
+            <option value="mercedes">Price - high to low</option>
+            <option value="audi">Ratings</option>
+          </select>
+        </div>
+
+        <div class="collection">
+          <ul>
+            <li class="mt-2 text-sm"><a href="">New Collections</a></li>
+            <li class="mt-2 text-sm"><a href="">All Products</a></li>
+            <li class="mt-2 text-sm"><a href="">Discounted Products</a></li>
+          </ul>
+        </div>
+
+        <div class="filter text-sm">
+          <ul>
+            <li class="font-bold">Filter by:</li>
+            <li class="mt-2"><a href="">Discounts</a></li>
+            <li class="mt-2"><a href="">Avalability</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="right flex flex-wrap gap-10">
+        <% allProducts.forEach((val) => { %>
+        <div
+          class="productContainer bg-zinc-50 shadow-[rgba(50,_50,_93,_0.25)_0px_2px_5px_-1px,_rgba(0,_0,_0,_0.3)_0px_1px_3px_-1px] w-48 h-64"
+        >
+          <div class="top h-3/4 bg-[<%= val.bgcolor %>] w-full">
+            <img
+              class="w-full h-full object-cover"
+              src="data:image/jpeg;base64,<%= val.image.toString('base64') %>"
+              alt="<%= val.name %>"
+            />
+          </div>
+          <div
+            class="bottom h-1/4 bg-[<%= val.panelcolor %>] text-[<%= val.textcolor %>] flex items-center p-2"
+          >
+            <div class="itemPrice w-4/5 text-sm">
+              <h4 class="font-bold"><%= val.name %></h4>
+              <div class="price flex gap-1">
+                <h4 class="line-through">₹<%= val.price %></h4>
+                <h4>₹<%= val.price - val.discount %></h4>
+              </div>
+            </div>
+            <div class="addToCart w-1/5 text-center">
+              <button
+                class="rounded-3xl bg-white p-1 h-[29px] w-[29px] font-bold text-xl text-black flex items-center justify-center"
+              >
+                <a href="/addtocart/<%= val._id %>">+</a>
+              </button>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>
