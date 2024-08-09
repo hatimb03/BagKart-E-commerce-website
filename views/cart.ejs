@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav
+      class="w-full flex justify-between bg-zinc-50 px-5 py-3 text-sm items-center"
+    >
+      <h1 class="text-3xl">BagKart</h1>
+      <div class="flex gap-10">
+        <a href="/shop">Shop</a>
+        <a href="/cart"> Cart (<%=user.cart.length%>) </a>
+        <a href="">My Account</a>
+        <a href="/users/logout" class="text-red-400">Logout</a>
+      </div>
+    </nav>
+
+    <div class="mSection flex">
+      <div class="container mt-10 w-3/4 flex flex-col">
+        <% user.cart.reverse().forEach((val) => { %>
+        <div class="mainContainer flex w-[80vw] gap-20 px-20 pt-24">
+          <div
+            class="left bg-[<%= val.panelcolor %>] text-[<%= val.textcolor %>] w-1/4 flex gap-4 flex-col"
+          >
+            <div class="image w-full h-72 bg-[<%=val.bgcolor%>]">
+              <img
+                class="w-full h-full object-cover"
+                src="data:image/jpeg;base64,<%=val.image.toString('base64')%>"
+                alt="<%= val.name %>"
+              />
+            </div>
+          </div>
+          <div class="middle w-2/4">
+            <div class="item flex justify-between">
+              <h2 class="text-2xl font-semibold"><%= val.name %></h2>
+            </div>
+
+            <h3 class="text-l font-semibold">Price Breakdown</h3>
+            <div class="breakdown flex flex-col gap-4 pl-10 mt-4 text-sm">
+              <div class="flex justify-between">
+                <p>MRP</p>
+                <p>₹ <%= val.price %></p>
+              </div>
+              <div class="flex justify-between">
+                <p>Discount</p>
+                <p>₹ <%= val.discount %></p>
+              </div>
+              <div class="flex justify-between">
+                <p>Platform fee</p>
+                <p>₹ 0</p>
+              </div>
+              <div class="flex justify-between">
+                <p>Shipping fee</p>
+                <p>FREE</p>
+              </div>
+            </div>
+            <hr class="border-black border-1 my-4" />
+            <div class="amount flex justify-between">
+              <h4>Total Amount</h4>
+              <p class="text-green-700 font-bold">
+                ₹ <%= val.price - val.discount %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <% }) %>
+      </div>
+      <div
+        class="totalSection sticky top-10 p-2 w-1/4 h-fit mt-32 mr-5 border-2 border-black"
+      >
+        <h2 class="text-xl font-semibold">Total Cart Price Breakdown</h2>
+        <div class="breakdown flex flex-col gap-4 mt-8 text-sm">
+          <div class="flex justify-between">
+            <p>Total MRP</p>
+            <p>₹ <%= breakdown.mrp %></p>
+          </div>
+          <div class="flex justify-between">
+            <p>Total Discount</p>
+            <p>₹ <%= breakdown.discount %></p>
+          </div>
+          <div class="flex justify-between">
+            <p>Platform fee</p>
+            <p>₹ 0</p>
+          </div>
+          <div class="flex justify-between">
+            <p>Shipping fee</p>
+            <p>FREE</p>
+          </div>
+          <hr class="border-black border-1 my-4" />
+          <div class="amount flex justify-between text-xl">
+            <h4 class="">Total Amount</h4>
+            <p class="text-green-700 font-bold">₹ <%= breakdown.sum %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
