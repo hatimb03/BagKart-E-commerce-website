@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BagKart - Best place to buy premium quality bags online</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <nav
-      class="w-full fixed top-0 left-0 flex justify-between bg-zinc-50 px-5 py-3 text-sm items-center"
+      class="w-full flex justify-between bg-zinc-50 px-5 py-3 text-sm items-center"
     >
       <h1 class="text-3xl">BagKart</h1>
       <div class="flex gap-10">
@@ -26,22 +30,26 @@
     </div>
     <%}%>
     <div class="mainContainer flex gap-24 py-20 px-10">
-      <div class="left flex flex-col gap-20">
+      <div class="left flex flex-col gap-20 sticky top-10">
         <div class="sort flex gap-2 text-sm">
-          <label for="cars">Sort by</label>
+          <label for="sort">Sort by</label>
           <select name="sort">
-            <option value="volvo">Popular</option>
-            <option value="saab">Price - low to high</option>
-            <option value="mercedes">Price - high to low</option>
-            <option value="audi">Ratings</option>
+            <option value="popular">Popular</option>
+            <option value="pl-h">Price - low to high</option>
+            <option value="ph-l">Price - high to low</option>
+            <option value="ratings">Ratings</option>
           </select>
         </div>
 
         <div class="collection">
           <ul>
-            <li class="mt-2 text-sm"><a href="">New Collections</a></li>
-            <li class="mt-2 text-sm"><a href="">All Products</a></li>
-            <li class="mt-2 text-sm"><a href="">Discounted Products</a></li>
+            <li class="mt-2 text-sm">
+              <a href="/shop/newcollections">New Collections</a>
+            </li>
+            <li class="mt-2 text-sm"><a href="/shop/all">All Products</a></li>
+            <li class="mt-2 text-sm">
+              <a href="/shop/discountedproducts">Discounted Products</a>
+            </li>
           </ul>
         </div>
 
@@ -87,5 +95,35 @@
         <% }) %>
       </div>
     </div>
+
+    <footer
+      class="bg-zinc-800 text-white flex flex-col gap-10 items-center justify-center px-10 py-10"
+    >
+      <ul class="flex justify-between items-center gap-8 w-full">
+        <li class="flex-grow"><hr class="border-1 border-white" /></li>
+        <li class="hover:cursor-pointer">
+          <i class="fa-brands fa-instagram"></i>
+        </li>
+        <li class="hover:cursor-pointer">
+          <i class="fa-brands fa-facebook-f"></i>
+        </li>
+        <li class="hover:cursor-pointer">
+          <i class="fa-brands fa-x-twitter"></i>
+        </li>
+        <li class="hover:cursor-pointer">
+          <i class="fa-brands fa-youtube"></i>
+        </li>
+        <li class="hover:cursor-pointer">
+          <i class="fa-brands fa-linkedin"></i>
+        </li>
+        <li class="flex-grow"><hr class="border-1 border-white" /></li>
+      </ul>
+      <div class="heading">
+        <h1 class="text-3xl text-center">BagKart</h1>
+      </div>
+      <div>
+        <p class="text-sm">CopyRight © BagKart.inc</p>
+      </div>
+    </footer>
   </body>
 </html>

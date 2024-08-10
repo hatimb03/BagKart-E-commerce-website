@@ -73,28 +73,30 @@
       <div
         class="totalSection sticky top-10 p-2 w-1/4 h-fit mt-32 mr-5 border-2 border-black"
       >
-        <h2 class="text-xl font-semibold">Total Cart Price Breakdown</h2>
-        <div class="breakdown flex flex-col gap-4 mt-8 text-sm">
-          <div class="flex justify-between">
-            <p>Total MRP</p>
-            <p>₹ <%= breakdown.mrp %></p>
-          </div>
-          <div class="flex justify-between">
-            <p>Total Discount</p>
-            <p>₹ <%= breakdown.discount %></p>
-          </div>
-          <div class="flex justify-between">
-            <p>Platform fee</p>
-            <p>₹ 0</p>
-          </div>
-          <div class="flex justify-between">
-            <p>Shipping fee</p>
-            <p>FREE</p>
-          </div>
-          <hr class="border-black border-1 my-4" />
-          <div class="amount flex justify-between text-xl">
-            <h4 class="">Total Amount</h4>
-            <p class="text-green-700 font-bold">₹ <%= breakdown.sum %></p>
+        <div>
+          <h2 class="text-xl font-semibold">Total Cart Price Breakdown</h2>
+          <div class="breakdown flex flex-col gap-4 mt-8 text-sm">
+            <div class="flex justify-between">
+              <p>Total MRP</p>
+              <p>₹ <%= breakdown.mrp %></p>
+            </div>
+            <div class="flex justify-between">
+              <p>Total Discount</p>
+              <p>₹ <%= breakdown.discount %></p>
+            </div>
+            <div class="flex justify-between">
+              <p>Platform fee</p>
+              <p>₹ 0</p>
+            </div>
+            <div class="flex justify-between">
+              <p>Shipping fee</p>
+              <p>FREE</p>
+            </div>
+            <hr class="border-black border-1 my-4" />
+            <div class="amount flex justify-between text-xl">
+              <h4 class="">Total Amount</h4>
+              <p class="text-green-700 font-bold">₹ <%= breakdown.sum %></p>
+            </div>
           </div>
         </div>
       </div>
